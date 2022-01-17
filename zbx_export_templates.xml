@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2022-01-17T02:30:56Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Gaiyun_bandwidth_package</template>
+            <name>aiyun带宽包监控模板</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <name>rx.rate</name>
+                    <key>gchack_bandwidthpackages[{$GAK_ID} {$GAK_SECRET} {$GINSTANCEID} net_rx.rate]</key>
+                    <value_type>FLOAT</value_type>
+                    <units>Mbps</units>
+                    <triggers>
+                        <trigger>
+                            <expression>last(/Gaiyun_bandwidth_package/gchack_bandwidthpackages[{$GAK_ID} {$GAK_SECRET} {$GINSTANCEID} net_rx.rate])={$GBANDWIDTH}</expression>
+                            <name>Bandwidth:{$GBANDWIDTH}Mbps</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>tx.rate</name>
+                    <key>gchack_bandwidthpackages[{$GAK_ID} {$GAK_SECRET} {$GINSTANCEID} net_tx.rate]</key>
+                    <value_type>FLOAT</value_type>
+                    <units>Mbps</units>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$GAK_ID}</macro>
+                    <value>&lt;change&gt;</value>
+                    <description>AK_ID</description>
+                </macro>
+                <macro>
+                    <macro>{$GAK_SECRET}</macro>
+                    <value>&lt;change&gt;</value>
+                    <description>ak_Secret</description>
+                </macro>
+                <macro>
+                    <macro>{$GBANDWIDTH}</macro>
+                    <value>&lt;change&gt;</value>
+                    <description>BANDWIDTH</description>
+                </macro>
+                <macro>
+                    <macro>{$GINSTANCEID}</macro>
+                    <value>&lt;change&gt;</value>
+                    <description>instanceId</description>
+                </macro>
+            </macros>
+        </template>
+    </templates>
+    <graphs>
+        <graph>
+            <name>aliyun_bandwidthpackages</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>Gaiyun_bandwidth_package</host>
+                        <key>gchack_bandwidthpackages[{$GAK_ID} {$GAK_SECRET} {$GINSTANCEID} net_rx.rate]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <color>F63100</color>
+                    <item>
+                        <host>Gaiyun_bandwidth_package</host>
+                        <key>gchack_bandwidthpackages[{$GAK_ID} {$GAK_SECRET} {$GINSTANCEID} net_tx.rate]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+</zabbix_export>
