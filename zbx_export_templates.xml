@@ -21,11 +21,11 @@
                     <name>rx.rate</name>
                     <key>gchack_bandwidthpackages[{$GAK_ID} {$GAK_SECRET} {$GINSTANCEID} net_rx.rate]</key>
                     <value_type>FLOAT</value_type>
-                    <units>Mbps</units>
+                    <units>bps</units>
                     <triggers>
                         <trigger>
                             <expression>last(/Gaiyun_bandwidth_package/gchack_bandwidthpackages[{$GAK_ID} {$GAK_SECRET} {$GINSTANCEID} net_rx.rate])={$GBANDWIDTH}</expression>
-                            <name>Bandwidth:{$GBANDWIDTH}Mbps</name>
+                            <name>Bandwidth:{$GBANDWIDTH}bps</name>
                             <priority>INFO</priority>
                         </trigger>
                     </triggers>
@@ -34,7 +34,7 @@
                     <name>tx.rate</name>
                     <key>gchack_bandwidthpackages[{$GAK_ID} {$GAK_SECRET} {$GINSTANCEID} net_tx.rate]</key>
                     <value_type>FLOAT</value_type>
-                    <units>Mbps</units>
+                    <units>bps</units>
                 </item>
             </items>
             <macros>
