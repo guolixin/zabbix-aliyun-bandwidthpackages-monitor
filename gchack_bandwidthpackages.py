@@ -29,9 +29,9 @@ def chack_instanceId(info,in_instanceId):
             temp_date1 =dict(i)
             if in_instanceId in temp_date1['instanceId']:
                 #返回Mbps
-                return float(temp_date1['Value'])/1024/1024
+                return int(temp_date1['Value'])
     else:
-        return float(0)
+        return int(0)
 
 
 def gchack_bandwidthpackages(in_access_key_id,in_access_key_secret,in_instanceId,in_MetricName):
